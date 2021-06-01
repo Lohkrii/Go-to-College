@@ -3,7 +3,7 @@
 
 |Overview|Frameworks & API|Functions & Methods|ML Model|Authors|
 |--------|----------------|-------------------|--------|-------|
-|[Overall Mechanics](#overall-mechanics)|[Libraries](#libraries)|[Functions](#functions)|[Model Info](#model-info)|[Authors Info](Authors Info)|
+|[Overall Mechanics](#overall-mechanics)|[Libraries](#libraries)|[Functions](#functions)|[Model Info](#model-info)|[Authors Info](#authors)|
 |[Objective](#objective)|[API](#api)|[Methods](#methods)|[Dataset](#dataset)||
 
 

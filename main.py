@@ -26,30 +26,25 @@ class CustomDataset(Dataset):
         answers = []
         for key in data_dict.keys():
             answers.append(data_dict[key])
-        shaped_arr = []
-        while len(answers) > 5:
-            piece = answers[:5]
-            shaped_arr.append(piece)
-            answers = answers[5:]
-        shaped_arr.append(answers)
-        shaped_arr= np.array(shaped_arr)
+        answers = CustomDataset.split_list(answers, 5)
+        answers = np.array(answers)
         class_id = self.class_map[class_name]
-        tensor_rep = torch.tensor(shaped_arr)
+        tensor_rep = torch.tensor(answers)
         class_id = torch.tensor([class_id])
         return tensor_rep.float(), class_id.float()
 
-#    def split_list(arr, size):
-#        arrs = []
-#        while len(arr) > size:
-#            piece = arr[:size]
-#            arrs.append(piece)
-#            arr = arr[size:]
-#        arrs.append(arr)
-#        return arrs
+    def split_list(arr, size):
+        arrs = []
+        while len(arr) > size:
+            piece = arr[:size]
+            arrs.append(piece)
+            arr = arr[size:]
+        arrs.append(arr)
+        return arrs
 
 if __name__ == "__main__":
-    dataset = CustomDataset()
-    data_loader = DataLoader(dataset, batch_size=2, shuffle=True)
-    for train, category in data_loader:
-        print("Batch of answers has shape: ", train.shape)
-        print("Batch of categories has shape: ", category.shape)
+#    dataset = CustomDataset()
+#    data_loader = DataLoader(dataset, batch_size=5, shuffle=True)
+#    for train, category in data_loader:
+#        print("Batch of answers has shape: ", train.shape)
+#        print("Batch of categories has shape: ", category.shape)

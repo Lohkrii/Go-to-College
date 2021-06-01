@@ -3,8 +3,8 @@
 
 |Overview|Frameworks & API|Functions & Methods|ML Model|Authors|
 |--------|----------------|-------------------|--------|-------|
-|Overall Mechanics|Libraries|Functions|Functions|Model Info|Authors Info|
-|Objective|API|Methods|Dataset||
+|[Overall Mechanics](#overall-mechanics)|[Libraries](#libraries)|[Functions](#functions)|[Model Info](#model-info)|[Authors Info](Authors Info)|
+|[Objective](#objective)|[API](#api)|[Methods](#methods)|[Dataset](#dataset)||
 
 
 ## Overview
@@ -33,5 +33,7 @@
 
 	This model is using 200 test data created from an automatic algorithm in hopes of having the AI learn new non-established patterns and in turn help in the sugeestion fase of the platform.
 
-
 ### Authors
+
+Joshua Lopez - [Github](https://github.com/Lohkrii)
+Jaime Martinez - [Github](https://github.com/jemn21819)

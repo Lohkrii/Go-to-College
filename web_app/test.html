@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Go To College</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Montserrat|Ubuntu" rel="stylesheet">
+
+  <!-- CSS Stylesheets -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <link rel="stylesheet" href="css/styles.css">
+
+  <!-- Font Awesome -->
+  <script defer src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
+
+  
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+  <!-- Bootstrap Scripts 4 -->
+  <link href='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css'>
+  <script src='https://stackpath.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.bundle.min.js'></script>
+  <link href='https://use.fontawesome.com/releases/v5.7.2/css/all.css'>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
+
+  
+</head>
+
+<body>
+
+  <section class="colored-section" id="title" >
+    <div id="heading" >
+    <!-- Nav Bar -->
+
+    <nav class="navbar navbar-expand-lg navbar-dark">
+      <a class="navbar-brand" href=""></a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02">
+          <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="index.html">HOME</a>
+          </li>
+          <!-- <li class="nav-item">
+            <a class="nav-link" href="#test">TEST</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#academic">ACADAMIC</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#footer">CONTACT US</a>
+          </li> -->
+          <li class="nav-item">
+            <a class="nav-link" href="#login">LOGIN</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#login">
+              <button class="signup-button btn btn-md btn-success" type="button">SIGN UP</button></a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+  </section>
+
+  <div class="container-fluid" id="test-desc">
+      <p class="desc-2">In order for us to estimate your personal interests and lifestyle, you will first 
+          need to answer a series of questions. 
+          Read each question below and decide answer most describes you, 
+          then select the radio button next to the answer.
+        <br><br>
+        <b> Answer honestly, non of this data will be used for profit.</b></p>
+  </div>
+
+  <div class="wrapper">
+    <div class="wrap" id="q1">
+        <div class="text-center pb-4">
+            <div class="h5 font-weight-bold"><span id="number"> </span>1 of 3 </div>
+        </div>
+        <div class="h3 font-weight-bold text-light"> 1. Do you like planning, organizing and creating structure?</div>
+        <div class="pt-4">
+            <form> 
+                <label class="options">Not<input type="radio" name="radio" id="rd" checked> <span class="checkmark"></span> </label> 
+                <label class="options">Sometimes<input type="radio" name="radio"> <span class="checkmark"></span> </label> 
+                <label class="options">Yes<input type="radio" name="radio"> <span class="checkmark"></span> </label>  
+            </form>
+        </div>
+        <div class="d-flex justify-content-end pt-2"> 
+            <button class="btn btn-primary" id="next1">Next <span class="fas fa-arrow-right"></span> </button> 
+        </div>
+    </div>
+    <div class="wrap" id="q2">
+        <div class="text-center pb-4">
+            <div class="h5 font-weight-bold"> <span id="number"> </span>2 of 3 </div>
+        </div>
+        <div class="h3 font-weight-bold text-light"> 2. Do you like history, religion or questions related to society and politics?</div>
+        <div class="pt-4">
+            <form> 
+                <label class="options">Not<input type="radio" name="radio" id="rd" checked> <span class="checkmark"></span> </label> 
+                <label class="options">Sometimes<input type="radio" name="radio"> <span class="checkmark"></span> </label> 
+                <label class="options">Yes<input type="radio" name="radio"> <span class="checkmark"></span> </label>
+            </form>
+        </div>
+        <div class="d-flex justify-content-end pt-2"> 
+            <button class="btn btn-primary mx-3" id="back1"> <span class="fas fa-arrow-left pr-1"></span>Previous </button> 
+            <button class="btn btn-primary" id="next2">Next <span class="fas fa-arrow-right"></span> </button> 
+        </div>
+    </div>
+    <div class="wrap" id="q3">
+        <div class="text-center pb-4">
+            <div class="h5 font-weight-bold"> <span id="number"> </span>3 of 3 </div>
+        </div>
+        <div class="h3 font-weight-bold text-light"> 3. Are you open to work internationally?</div>
+        <div class="pt-4">
+            <form> 
+                <label class="options">Not<input type="radio" name="radio" id="rd" checked> <span class="checkmark"></span> </label> 
+                <label class="options">Sometimes<input type="radio" name="radio"> <span class="checkmark"></span> </label> 
+                <label class="options">Yes<input type="radio" name="radio"> <span class="checkmark"></span> </label> 
+            </form>
+        </div>
+        <div class="d-flex justify-content-end pt-2"> 
+            <button class="btn btn-primary mx-3" id="back2"> <span class="fas fa-arrow-left pr-2"></span>Previous </button> 
+            <button class="btn btn-primary" id="next3">Submit </button> 
+        </div>
+    </div>
+</div>
+<!-- <div class="d-flex flex-column align-items-center">
+    <div class="h3 font-weight-bold text-danger">Go Dark</div> <label class="switch"> <input type="checkbox"> <span class="slider round"></span> </label>
+</div> -->
+<script>
+    var q1 = document.getElementById("q1");
+    var q2 = document.getElementById("q2");
+    var q3 = document.getElementById("q3");
+    var next1 = document.getElementById('next1')
+    var back1 = document.getElementById('back1')
+    var next2 = document.getElementById('next2')
+    var back2 = document.getElementById('back2')
+    document.addEventListener('DOMContentLoaded', function() {
+        let query = window.matchMedia("(max-width: 767px)");
+        if (query.matches) {
+            next1.onclick = function() {
+                q1.style.left = "-650px";
+                q2.style.left = "15px";
+            }
+            back1.onclick = function() {
+                q1.style.left = "15px";
+                q2.style.left = "650px";
+            }
+            back2.onclick = function() {
+                q2.style.left = "15px";
+                q3.style.left = "650px";
+            }
+            next2.onclick = function() {
+                q2.style.left = "-650px";
+                q3.style.left = "15px";
+            }
+        } else {
+            next1.onclick = function() {
+                q1.style.left = "-650px";
+                q2.style.left = "50px";
+            }
+            back1.onclick = function() {
+                q1.style.left = "50px";
+                q2.style.left = "650px";
+            }
+            back2.onclick = function() {
+                q2.style.left = "50px";
+                q3.style.left = "650px";
+            }
+            next2.onclick = function() {
+                q2.style.left = "-650px";
+                q3.style.left = "50px";
+            }
+        }
+    });
+
+    function uncheck() {
+        var rad = document.getElementById('rd')
+        rad.removeAttribute('checked')
+    }
+    document.addEventListener('DOMContentLoaded', function() {
+        const main = document.querySelector('body')
+        const toggleSwitch = document.querySelector('.slider')
+        toggleSwitch.addEventListener('click', () => {
+            main.classList.toggle('dark-theme')
+        })
+    })
+</script>
+
+
+   <!-- Footer -->
+
+   <footer class="white-section" id="footer">
+    <div class="container-fluid">
+      <div>
+      <!-- <button class="download-button btn btn-lg btn-dark" type="button"><i class="fab fa-apple"></i> Download</button> -->
+      <!-- <button class="download-button btn btn-lg btn-dark" type="button"><i class="fab fa-google-play"></i> Download</button> -->
+    </div>
+    <div class="social-box">
+      <i class="social-icon fab fa-facebook-f"></i>
+      <i class="social-icon fab fa-twitter"></i>
+      <i class="social-icon fab fa-instagram"></i>
+      <i class="social-icon fas fa-envelope"></i>
+      <p>© Copyright 2021 Go To College</p>
+    </div>
+  </footer>
+
+  </body>
+</html>

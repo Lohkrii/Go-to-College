@@ -36,18 +36,18 @@
 
 |Class|Method|Description|
 |-----|------|-----------|
-|CustomDataSet()|<div>``Python
-def __init__(self):
-        self.data_path = "g2c_dataset/training/"
-        file_list = glob.glob(self.data_path + "*")
-        print(file_list)
-        self.data = []
-        for class_path in file_list:
-            class_name = class_path.split("/")[-1]
-            for data_path in glob.glob(class_path + "/*.json"):
-                self.data.append([data_path, class_name])
-        print(self.data)
-        self.class_map = {"eng": 0, "bus": 1, "art": 2}``</div>| This Method instatiates a an object of this class, by setting the data path and classifying said data for it to be loaded into the model.
+|CustomDataSet()|`Python`|
+||`def __init__(self):`|
+||`    self.data_path = "g2c_dataset/training/"`|
+||`    file_list = glob.glob(self.data_path + "*")`|
+||`    print(file_list)`|
+||`    self.data = []`|
+||`    for class_path in file_list:`|
+||`        class_name = class_path.split("/")[-1]`|
+||`        for data_path in glob.glob(class_path + "/*.json"):`|
+||`            self.data.append([data_path, class_name])`|
+||`    print(self.data)`|
+||`    self.class_map = {"eng": 0, "bus": 1, "art": 2}`| This Method instatiates a an object of this class, by setting the data path and classifying said data for it to be loaded into the model.
 ### Functions
 
 |Function|Description|

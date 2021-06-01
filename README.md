@@ -17,7 +17,8 @@
 
 ### Frameworks
 
-* PyTorch
+|Frameworks|
+* [PyTorch](https://pytorch.org/)
 
 ### API
 
@@ -35,7 +36,7 @@
 
 |Class|Method|Description|
 |-----|------|-----------|
-|CustomDataSet()|```Python
+|CustomDataSet()|<div>``Python
 def __init__(self):
         self.data_path = "g2c_dataset/training/"
         file_list = glob.glob(self.data_path + "*")
@@ -46,7 +47,7 @@ def __init__(self):
             for data_path in glob.glob(class_path + "/*.json"):
                 self.data.append([data_path, class_name])
         print(self.data)
-        self.class_map = {"eng": 0, "bus": 1, "art": 2}```| This Method instatiates a an object of this class, by setting the data path and classifying said data for it to be loaded into the model.
+        self.class_map = {"eng": 0, "bus": 1, "art": 2}``</div>| This Method instatiates a an object of this class, by setting the data path and classifying said data for it to be loaded into the model.
 ### Functions
 
 |Function|Description|

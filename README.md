@@ -18,7 +18,8 @@
 ### Frameworks
 
 |Frameworks|
-* [PyTorch](https://pytorch.org/)
+|----------|
+| [PyTorch](https://pytorch.org/)|
 
 ### API
 
@@ -27,10 +28,11 @@
 ### Libraries
 
 |Libraries|
-* [numpy](https://numpy.org/)
-* [json](https://www.json.org/json-en.html)
-* [glob](https://docs.python.org/3/library/glob.html)
-* [pandas](https://pandas.pydata.org/)
+|---------|
+|[numpy](https://numpy.org/)|
+|[json](https://www.json.org/json-en.html)|
+|[glob](https://docs.python.org/3/library/glob.html)|
+|[pandas](https://pandas.pydata.org/)|
 
 ### Methods
 

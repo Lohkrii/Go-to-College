@@ -2,7 +2,9 @@
 
 import numpy as np
 import json, torch, glob
+from torchvision import datasets
 from torch.utils.data import Dataset, DataLoader
+from torchvision.transforms import ToTensor, Lambda
 
 class CustomDataset(Dataset):
     def __init__(self):
@@ -22,29 +24,34 @@ class CustomDataset(Dataset):
 
     def __getitem__(self, idx):
         data_path, class_name = self.data[idx]
-        data_dict = json.load(open(data_path))
+        data_dict = json.load(open(data_path, 'r'))
         answers = []
         for key in data_dict.keys():
             answers.append(data_dict[key])
-        answers = CustomDataset.split_list(answers, 5)
+        answers = split_list(answers, 5)
         answers = np.array(answers)
         class_id = self.class_map[class_name]
         tensor_rep = torch.tensor(answers)
         class_id = torch.tensor([class_id])
         return tensor_rep.float(), class_id.float()
 
-    def split_list(arr, size):
-        arrs = []
-        while len(arr) > size:
-            piece = arr[:size]
-            arrs.append(piece)
-            arr = arr[size:]
-        arrs.append(arr)
-        return arrs
+def split_list(arr, size):
+    arrs = []
+    while len(arr) > size:
+        piece = arr[:size]
+        arrs.append(piece)
+        arr = arr[size:]
+    arrs.append(arr)
+    return arrs
+
+#class NeuralNetwork(nn.Module):
+
 
 if __name__ == "__main__":
-#    dataset = CustomDataset()
-#    data_loader = DataLoader(dataset, batch_size=5, shuffle=True)
-#    for train, category in data_loader:
-#        print("Batch of answers has shape: ", train.shape)
-#        print("Batch of categories has shape: ", category.shape)
+    train_dataset = CustomDataset()
+#    test_dataset = CustomDataset(test)
+    train_dataloader = DataLoader(train_dataset, batch_size=5, shuffle=True)
+#    test_dataloader = DataLoader(test_dataset, batch_size=5, shuffle=True)
+    for train, category in train_dataloader:
+        print("Batch of answers has shape: ", train.shape)
+        print("Batch of categories has shape: ", category.shape)

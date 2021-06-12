@@ -154,7 +154,7 @@ function createPromptItems() {
 function createValueButtons() {
 	for (var li_index = 0; li_index < prompts.length; li_index++) {
 		var group = document.createElement('div')
-		group.classNme = 'btn-group btn-group-justified';
+		group.classNe = 'btn-group btn-group-justified';
 		for (var i = 0; i < prompt_values.length; i++) {
 			var btn_group = document.createElement('div');
 			btn_group.className = 'btn-group';
@@ -165,7 +165,7 @@ function createValueButtons() {
 			btn_group.appendChild(button);
 			group.appendChild(btn_group);
 			document.getElementsByClassName('prompt')[li_index].appendChild(group);
-		}
+    }
 	}
 }
 createPromptItems();
@@ -183,6 +183,7 @@ function findPromptWeight(prompts, group) {
 	}
 	return weight;
 }
+
 // Get the weight associated to the value
 function findValueWeight(values, value) {
 	var weight = 0;
@@ -193,6 +194,7 @@ function findValueWeight(values, value) {
 	}
 	return weight;
 }
+
 function arrSort(dict) {
   var length = 0;
   var arr = [];
@@ -204,20 +206,26 @@ function arrSort(dict) {
   }
   return arr;
 }
+
 //Calculating results function
-function results(prompts) {
-  var idx = 0;
-  const arr = [];
-  for (idx = 0; idx < prompts.length; idx++) {
-    arr.push(prompts[idx])
-  }
-  return arr;
-}
+// function calcResults(prompts) {
+//   var idx = 0;
+//   const arr = [];
+//   for (idx = 0; idx < prompts.length; idx++) {
+//     arr.push(prompts[idx])
+//   }
+//   console.log(arr.length)
+//   return arr;
+// }
+
 function test_answer(results) {
   var idx = 0;
   var eng = 0;
   var art = 0;
   var bus = 0;
+  if (results.length < 19) {
+    return "error";
+  }
   for (idx = 5; idx < results.length; idx++) {
     if (idx > 14) {
       eng += results[idx];
@@ -227,70 +235,54 @@ function test_answer(results) {
       art += results[idx];
     }
   }
-  console.log(eng);
-  console.log(bus);
-  console.log(art);
   if (eng > art && eng > bus) {
     return "eng";
   } else if (art > eng && art > bus) {
     return "art";
-  } else {
+  } else if (bus > eng && bus > art) {
     return "bus";
+  } else if (art === bus && art > eng) {
+    return "execution";
+  } else if (art === eng && art > bus) {
+    return "arquitect";
+  } else if (bus === eng && bus > art) {
+    return "analytics";
+  } else {
+  return "tie";
   }
 }
-// answerArr = [];
+
 var answersDict = {};
 // When user clicks a value to agree/disagree with the prompt, display to the user what they selected
 $('.value-btn').mousedown(function () {
 	var classList = $(this).attr('class');
-	// console.log(classList);
 	var classArr = classList.split(" ");
 	console.log(classArr);
 	var this_group = classArr[0];
-	// console.log(this_group);
 	// If button is already selected, de-select it when clicked and subtract any previously added values to the total
 	// Otherwise, de-select any selected buttons in group and select the one just clicked
 	// And subtract deselected weighted value and add the newly selected weighted value to the total
 	if($(this).hasClass('active')) {
 		$(this).removeClass('active');
     answersDict[this_group] = (findPromptWeight(prompts, this_group) * findValueWeight(prompt_values, $(this).text()));
-    // console.log(answersDict);
-    // answerArr.push(answersDict[this_group].value);
-    // console.log(answerArr);
-    // total = test_answer(results(answerArr));
-	//total -= (findPromptWeight(prompts, this_group) * findValueWeight(prompt_values, $(this).text()));
 	} else {
-		// $('[class='thisgroup).prop('checked', false);
 		answersDict[this_group] = (findPromptWeight(prompts, this_group) * findValueWeight(prompt_values, $('.'+this_group+'.active').text()));
-    // answerArr.push(answersDict[this_group].value);
-    // console.log(answersDict);
-    // console.log(answerArr);
-    // total = test_answer(results(answerArr));
-    // total -= (findPromptWeight(prompts, this_group) * findValueWeight(prompt_values, $('.'+this_group+'.active').text()));
-		// console.log($('.'+this_group+'.active').text());
 		$('.'+this_group).removeClass('active');
-		// console.log('group' + findValueWeight(prompt_values, $('.'+this_group).text()));
-		// $(this).prop('checked', true);
 		$(this).addClass('active');
 		answersDict[this_group] = (findPromptWeight(prompts, this_group) * findValueWeight(prompt_values, $(this).text()));
-    // answerArr.push(answersDict[this_group].value);
-    // console.log(answersDict);
-    // console.log(answerArr);    
-    // total = test_answer(results(answerArr));
-    // total += (findPromptWeight(prompts, this_group) * findValueWeight(prompt_values, $(this).text()));
 	}
+  result = arrSort(answersDict);
+  total = test_answer(result);
 	console.log(total);
+  console.log(result.length);
 })
-  // console.log("art");
-  // console.log("bus");
-  // console.log("eng");
+
 $('#submit-btn').click(function () {
 	// After clicking submit, add up the totals from answers
 	// For each group, find the value that is active
 	$('.results').removeClass('hide');
 	$('.results').addClass('show');
 	console.log(answersDict);
-  total = test_answer(results(arrSort(answersDict)));
 	if(total === "art") {
 		// document.getElementById('intro-bar').style.width = ((total / 60) * 100) + '%';
 		// console.log(document.getElementById('intro-bar').style.width);
@@ -309,7 +301,7 @@ Generally art students have an aptitude or liking towards writing, painting, des
 This test is only a recommendation, if you have a set preference not specified here, don’t be afraid to pursue it!\
 <br><br>\
 Generally business students have an aptitude or liking towards marketing, product branding, business management and more. There are many different bahcelors within the business sector and many more proffesions. But have no worry! Once you start and discover the branches you could take your road will become much clearer.';
-	} else {
+	} else if(total === "eng") {
 		document.getElementById('results').innerHTML = '<b>Engineering!</b><br><br>\
 		It looks like your highest aptitude and preference is engineering! Don’t be discouraged if this is not what you had in mind\n\
 <br><br>\
@@ -318,7 +310,40 @@ This test is only a recommendation, if you have a set preference not specified h
 Generally engineering students have an aptitude or liking towards STEM fields, on site jobs, and product building affinity. There are hundreds of Engineering bachelors\
 and thousands of professions inside of this field. But don’t get overwhelmed! Start by going into what you like the most and dive deeper from there. It’s about the journey not\
 about the destination.'
-	}
+	} else if (total === "analytics") {
+		document.getElementById('results').innerHTML = '<b>Tied!</b><br><br>\
+		You scored a tie in Business and Engineering! Don’t be discouraged if this is not what you had in mind.\
+    <br><br>\
+    This test is only a recommendation, if you have a set preference not specified here, don’t be afraid to pursue it!\
+    <br><br>\
+    Generally this tie means you stand out in Anlytics and have a knack for the implementation of systems, it also means you have more possibilities than most students, if you have  a field that calls to you you should definitely pursue that path, the best way to find the things we like is to try them!'
+  } else if (total === "architect") {
+		document.getElementById('results').innerHTML = '<b>Tied!</b><br><br>\
+		You scored a tie between Engineering and Art! Don’t be discouraged if this is not what you had in mind.\
+    <br><br>\
+    This test is only a recommendation, if you have a set preference not specified here, don’t be afraid to pursue it!\
+    <br><br>\
+    Generally this tie means you have an aptitude for design and implementation, these two fields synergize very well, there are thousands of preffesions in this in between, it also means you have more possibilities than most students, if you have a field that calls to you you should definitely pursue that path, the best way to find the things we like is to try them!'
+  } else if (total === "execution") {
+		document.getElementById('results').innerHTML = '<b>Tied!</b><br><br>\
+		You scored a tie between art and business! Don’t be discouraged if this is not what you had in mind.\
+    <br><br>\
+    This test is only a recommendation, if you have a set preference not specified here, don’t be afraid to pursue it!\
+    <br><br>\
+    Generally this tie means you have an aptitude for the art sector and business sector, there are thousands of proffesions within this category. It also means you have more options than most students, if you have a field that calls to you you should definitely pursue that path, the best way to find the things we like is to try them!'
+  } else if (total === "tie") {
+		document.getElementById('results').innerHTML = '<b>Tied!</b><br><br>\
+		You scored a tie in All! Don’t be discouraged if this is not what you had in mind.\
+    <br><br>\
+    This test is only a recommendation, if you have a set preference not specified here, don’t be afraid to pursue it!\
+    <br><br>\
+    Generally this tie means you have more possibilities than most students, if you have a field that calls to you you should definitely pursue that path, the best way to find the things we like is to try them!'
+  } else {
+    document.getElementById('results').innerHTML = '<b>Error!</b><br><br>\
+		Did you answer the test completely? Please go back and verify that all of your answers are correctly marked.\
+    <br><br>\
+    This test is only a recommendation, if you have a set preference not specified here, don’t be afraid to pursue it!'
+  }
 	// Hide the quiz after they submit their results
 	$('#quiz').addClass('hide');
 	$('#submit-btn').addClass('hide');
@@ -331,4 +356,4 @@ $('#retake-btn').click(function () {
 	$('#retake-btn').addClass('hide');
 	$('.results').addClass('hide');
 	$('.results').removeClass('show');
-})a
+})m

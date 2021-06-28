@@ -27,23 +27,25 @@
 
 ### Libraries
 
-|Libraries|
-|---------|
-|[numpy](https://numpy.org/)|
-|[json](https://www.json.org/json-en.html)|
-|[glob](https://docs.python.org/3/library/glob.html)|
-|[pandas](https://pandas.pydata.org/)|
+|Libraries|Implementation|
+|---------|---------|
+|[Numpy](https://numpy.org/)| This library was used to manipulate and populate the data that will be passed on to the model.|
+|[JSON](https://www.json.org/json-en.html)| The JSON library is used to transfer the data from the quiz to the data prepping console which is then passed on to the model.|
+|[glob](https://docs.python.org/3/library/glob.html)| Glob simplifies interactions between files making it easier to work with multiple paths.|
 
 ### Methods
 
-|Class|Method|Description|
-|-----|------|-----------|
-|CustomDataSet()|| This Method instatiates a an object of this class, by setting the data path and classifying said data for it to be loaded into the model.
+|Class|Description|
+|-----|-----------|
+|CustomDataSet()|| This Method instatiates an object of this class, by setting the data path and classifying said data for it to be loaded into the model.
 ### Functions
 
 |Function|Description|
 |--------|-----------|
-|[split\_list()](/main.py)|Splits a given list into nested lists, the size is specified by choosing the ammount of elements each sub-list will contain.|
+|[split\_list()](/main.py)| Splits a given list into nested lists, the size is specified by choosing the ammount of elements each sub-list will contain.|
+|[sample\_creator(file_ammt)](/dataset/sample_creator.py)| Creates n file(s) with pre-set data to train and test model.|
+|[calculate\_score(arr)](/dataset/sample_creator.py)| Calculates the corresponding concentration.|
+|[identify_label(arr)](/dataset/sample_creator.py)| Labels the file with the corresponding name.|
 
 ## ML Model
 
